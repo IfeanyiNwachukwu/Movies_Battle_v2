@@ -13,7 +13,8 @@ class FetchData{
    GetMovieDetail   = async  (movieID) => {
        this.requestMovieList = {i : movieID}
        const response = await axios.get('http://omdbapi.com/',this.apiRequestObjectForList(this.requestMovieList));
-       console.log(response);
+       return response.data;
+    //    console.log(response);
    }
 
    

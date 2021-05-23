@@ -15,9 +15,7 @@ const dropDown = document.querySelector('.dropdown')
 const resultsWrapper = document.querySelector('.results');
 const userInput = document.querySelector('input');
 const movieSummary = document.querySelector('#summary');
-movieSummary.innerHTML = `
 
-`
 
 
 const fetchData = new FetchData();

@@ -11,7 +11,7 @@ class UserInteractions{
   
     OnInputEvent = async event =>{
       const movies = await fetchData.GetMovieList(event.target.value);
-     console.log(movies);
+    //  console.log(movies);
       if(!movies.length){
           this.DropDown.classList.remove('is-active');
       }
@@ -46,28 +46,48 @@ class UserInteractions{
 
    DisplayMovieInDetail  = async movieID => {
       const response =  await fetchData.GetMovieDetail(movieID);
-      this.MovieInDetailSummary(response.data);
+      console.log(response);
+      this.MovieInDetailSummary(response);
 
    }
 
    MovieInDetailSummary =  (movieDetail) => {
 return  this.MovieSummaryDiv.innerHTML = `
-       <article class="media">
-        <figure class="media-left">
-            <p class="image">
-                <img src="${movieDetail.Poster}" alt="">
-            </p>
-        </figure>
-        <div class="media-content">
-            <div class="content">
-                <h1>${movieDetail.Title}</h1>
-                <h4>${movieDetail.Genre}</h4>
-                <p>${movieDetail.Plot}</p>
-            </div>
+    <article class="media">
+    <figure class="media-left">
+        <p class="image">
+            <img src="${movieDetail.Poster}" alt="">
+        </p>
+    </figure>
+    <div class="media-content">
+        <div class="content">
+            <h1>${movieDetail.Title}</h1>
+            <h4>${movieDetail.Genre}</h4>
+            <p>${movieDetail.Plot}</p>
         </div>
+    </div>
     </article>
-       
-       `
+    <article class="notification is-primary">
+    <p class="title">${movieDetail.Awards}</p>
+    <p class="subtitle">Awards</p>
+    </article>
+    <article class="notification is-primary">
+    <p class="title">${movieDetail.BoxOffice}</p>
+    <p class="subtitle">Box Office</p>
+    </article>
+    <article class="notification is-primary">
+    <p class="title">${movieDetail.Metascore}</p>
+    <p class="subtitle">Metascore</p>
+    </article>
+    <article class="notification is-primary">
+    <p class="title">${movieDetail.imdbRating}</p>
+    <p class="subtitle">IMDB Rating</p>
+    </article>
+    <article class="notification is-primary">
+    <p class="title">${movieDetail.imdbVotes}</p>
+    <p class="subtitle">IMDB Votes</p>
+    </article>
+`
    }
 
    clearWidget = (event) => {
