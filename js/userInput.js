@@ -1,10 +1,11 @@
 class UserInteractions{
 
-    constructor(root,dropdown,resultsWrapper,inputByUser){
+    constructor(root,dropdown,resultsWrapper,inputByUser,movieSummaryDiv){
         this.Root = root;
         this.DropDown = dropdown;
         this.ResultsWrapper = resultsWrapper;
         this.Input = inputByUser;
+        this.MovieSummaryDiv = movieSummaryDiv;
     }
    
   
@@ -44,9 +45,29 @@ class UserInteractions{
    }
 
    DisplayMovieInDetail  = async movieID => {
-      const movieInDetail =  await fetchData.GetMovieDetail(movieID);
-      console.log(movieInDetail);
+      const response =  await fetchData.GetMovieDetail(movieID);
+      this.MovieInDetailSummary(response.data);
 
+   }
+
+   MovieInDetailSummary =  (movieDetail) => {
+return  this.MovieSummaryDiv.innerHTML = `
+       <article class="media">
+        <figure class="media-left">
+            <p class="image">
+                <img src="${movieDetail.Poster}" alt="">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <h1>${movieDetail.Title}</h1>
+                <h4>${movieDetail.Genre}</h4>
+                <p>${movieDetail.Plot}</p>
+            </div>
+        </div>
+    </article>
+       
+       `
    }
 
    clearWidget = (event) => {

@@ -14,14 +14,20 @@ root.innerHTML =  `
 const dropDown = document.querySelector('.dropdown')
 const resultsWrapper = document.querySelector('.results');
 const userInput = document.querySelector('input');
+const movieSummary = document.querySelector('#summary');
+movieSummary.innerHTML = `
+
+`
 
 
 const fetchData = new FetchData();
 const utilities = new Utilities(); 
-const userInteraction = new UserInteractions(root,dropDown,resultsWrapper,userInput);
+const userInteraction = new UserInteractions(root,dropDown,resultsWrapper,userInput,movieSummary);
 
-// Check for movies
+// Check for movies and get the list of movies
 userInput.addEventListener('input',utilities.Debounce(userInteraction.OnInputEvent));
+
+// Select one movie and return the detail of that movie
 
 // clear Display When user clicks anywhere outside the widget
 document.addEventListener('click',userInteraction.clearWidget);
