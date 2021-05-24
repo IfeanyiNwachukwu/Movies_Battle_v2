@@ -1,3 +1,4 @@
+
 class Utilities {
 
     Debounce = (func) => {
@@ -20,5 +21,8 @@ class Utilities {
         console.log(input);
     }
 
+   
+
 
 }
+
