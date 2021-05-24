@@ -3,10 +3,9 @@ class AutoComplete{
 
 
 
-    constructor(rooty,fetchData,utilities,media){
+    constructor(rooty,utilities,media){
         
-        this.Root = rooty
-        this.FetchData = fetchData
+        this.Root = rooty;
         this.Utilities = utilities;
         this.Media = media;
        
@@ -31,7 +30,8 @@ class AutoComplete{
 
     OnInputEvent = async event =>{
         
-        const items = await this.FetchData.GetMovieList(event.target.value);
+        // const items = await this.FetchData.GetMovieList(event.target.value);
+        const items = await this.Media.FetchAllMedia(event.target.value);
         console.log(items);
         if(!items.length){
             this.DropDown.classList.remove('is-active');

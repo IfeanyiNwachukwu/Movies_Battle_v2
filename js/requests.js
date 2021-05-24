@@ -1,7 +1,7 @@
 class FetchData{
     requestMovieList = {s : 'search'};
    
-    GetMovieList   =  async (searchTerm) => {
+    FetchAllResources   =  async (searchTerm) => {
        this.requestMovieList = {s : searchTerm};
        const response = await axios.get('http://omdbapi.com/',this.apiRequestObjectForList(this.requestMovieList));
        if(response.data.Response === 'False'){
@@ -10,7 +10,7 @@ class FetchData{
        return response.data.Search;
    }
 
-   GetMovieDetail   = async  (movieID) => {
+   GetSingleResource   = async  (movieID) => {
        this.requestMovieList = {i : movieID}
        const response = await axios.get('http://omdbapi.com/',this.apiRequestObjectForList(this.requestMovieList));
        return response.data;

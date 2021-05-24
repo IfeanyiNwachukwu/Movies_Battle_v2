@@ -5,8 +5,13 @@ class Media{
         this.MovieSummaryDiv = movieSummaryDiv;
     }
 
+    FetchAllMedia = async(searchTerm) => {
+        const allMedia = await this.FetchData.FetchAllResources(searchTerm);
+        return allMedia;
+    }
+
     DisplayMediaInDetail  = async mediaID => {
-        const response =  await this.FetchData.GetMovieDetail(mediaID);
+        const response =  await this.FetchData.GetSingleResource(mediaID);
         console.log(response);
         this.MediaInDetailSummary(response);
        
