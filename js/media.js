@@ -11,6 +11,7 @@ class Media{
     }
 
     DisplayMediaInDetail  = async mediaID => {
+        document.querySelector('.tutorial').classList.add('is-hidden');
         const response =  await this.FetchData.GetSingleResource(mediaID);
         console.log(response);
         this.MediaInDetailSummary(response);
