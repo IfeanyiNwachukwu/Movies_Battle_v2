@@ -1,26 +1,35 @@
 class Media{
 
-    constructor(fetchData,movieSummaryDiv){
+    constructor(fetchData){
         this.FetchData = fetchData;
-        this.MovieSummaryDiv = movieSummaryDiv;
+        
     }
 
     FetchAllMedia = async(searchTerm) => {
         const allMedia = await this.FetchData.FetchAllResources(searchTerm);
         return allMedia;
     }
+    
+    RenderOption = (media) => {
+        let imgSrc = media.Poster === 'N/A' ? '' : media.Poster;
+        return `
+        <img src="${imgSrc}"/>
+        ${media.Title}
+        `
 
-    DisplayMediaInDetail  = async mediaID => {
+   }
+
+    DisplayMediaInDetail  = async (mediaID,summaryElement) => {
         document.querySelector('.tutorial').classList.add('is-hidden');
         const response =  await this.FetchData.GetSingleResource(mediaID);
         console.log(response);
-        this.MediaInDetailSummary(response);
+        this.MediaInDetailSummary(response,summaryElement);
        
   
      }
   
-     MediaInDetailSummary =  (mediaDetail) => {
-  return  this.MovieSummaryDiv.innerHTML = `
+     MediaInDetailSummary =  (mediaDetail,summaryElement) => {
+  return  summaryElement.innerHTML = `
       <article class="media">
       <figure class="media-left">
           <p class="image">
@@ -58,14 +67,7 @@ class Media{
   `
      }
 
-     RenderOption = (media) => {
-          let imgSrc = media.Poster === 'N/A' ? '' : media.Poster;
-          return `
-          <img src="${imgSrc}"/>
-          ${media.Title}
-          `
-
-     }
+    
 
 
 }
