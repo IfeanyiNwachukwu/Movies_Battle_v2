@@ -21,7 +21,9 @@ class Utilities {
         console.log(input);
     }
 
-   
+    GetInputValue = (item) =>{
+        return item.Title
+    }
 
 
 }
