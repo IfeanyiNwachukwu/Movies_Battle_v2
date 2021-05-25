@@ -25,7 +25,7 @@ class Media{
     DisplayMediaInDetail  = async (mediaID,summaryElement,side) => {
         document.querySelector('.tutorial').classList.add('is-hidden');
         const response =  await this.FetchData.GetSingleResource(mediaID);
-        console.log(response);
+        // console.log(response);
         this.MediaDetailTemplate(response,summaryElement);
         this.Side = side;
         if(this.Side === 'left'){
