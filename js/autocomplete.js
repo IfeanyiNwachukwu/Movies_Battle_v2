@@ -3,7 +3,7 @@ class AutoComplete{
 
 
 
-    constructor(rooty,utilities,media,summaryDiv){
+    constructor(rooty,utilities,media,summaryDiv,side){
         
         this.Root = rooty ;
         this.Root.innerHTML = ` <label for=""><b>Search</b></label>
@@ -23,6 +23,7 @@ class AutoComplete{
         this.DropDown       =       this.Root.querySelector('.dropdown');
         this.ResultsWrapper =       this.Root.querySelector('.results');
         this.UserInput      =       this.Root.querySelector('.input');
+        this.Side = side;
         
     }
 
@@ -50,7 +51,7 @@ class AutoComplete{
           option.addEventListener('click',() => {
               
              this.DropDown.classList.remove('is-active');
-            this.Media.DisplayMediaInDetail(item.imdbID,this.SummaryDiv);
+            this.Media.DisplayMediaInDetail(item.imdbID,this.SummaryDiv,this.Side);
             this.UserInput.value = this.Utilities.GetInputValue(item);
              
               
